@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSuerteTipoRestriccionQuemaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSuerteTipoRestriccionQuemaLabel_suertetipoRestriccionquemacol}" for="suertetipoRestriccionquemacol" />
+                    <h:inputText id="suertetipoRestriccionquemacol" value="#{suerteTipoRestriccionQuemaController.selected.suertetipoRestriccionquemacol}" title="#{bundle.EditSuerteTipoRestriccionQuemaTitle_suertetipoRestriccionquemacol}" required="true" requiredMessage="#{bundle.EditSuerteTipoRestriccionQuemaRequiredMessage_suertetipoRestriccionquemacol}"/>
+                    <h:outputLabel value="#{bundle.EditSuerteTipoRestriccionQuemaLabel_suerteCodigoUniSuerte}" for="suerteCodigoUniSuerte" />
+                    <h:inputText id="suerteCodigoUniSuerte" value="#{suerteTipoRestriccionQuemaController.selected.suerteCodigoUniSuerte}" title="#{bundle.EditSuerteTipoRestriccionQuemaTitle_suerteCodigoUniSuerte}" required="true" requiredMessage="#{bundle.EditSuerteTipoRestriccionQuemaRequiredMessage_suerteCodigoUniSuerte}"/>
+                    <h:outputLabel value="#{bundle.EditSuerteTipoRestriccionQuemaLabel_tipoRestriccionquemaidtiporestrincion}" for="tipoRestriccionquemaidtiporestrincion" />
+                    <h:inputText id="tipoRestriccionquemaidtiporestrincion" value="#{suerteTipoRestriccionQuemaController.selected.tipoRestriccionquemaidtiporestrincion}" title="#{bundle.EditSuerteTipoRestriccionQuemaTitle_tipoRestriccionquemaidtiporestrincion}" required="true" requiredMessage="#{bundle.EditSuerteTipoRestriccionQuemaRequiredMessage_tipoRestriccionquemaidtiporestrincion}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{suerteTipoRestriccionQuemaController.update}" value="#{bundle.EditSuerteTipoRestriccionQuemaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSuerteTipoRestriccionQuemaViewLink}"/>
+                <br />
+                <h:commandLink action="#{suerteTipoRestriccionQuemaController.prepareList}" value="#{bundle.EditSuerteTipoRestriccionQuemaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSuerteTipoRestriccionQuemaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

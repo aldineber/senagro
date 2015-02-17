@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLaboresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLaboresLabel_idLaboresCampo}" for="idLaboresCampo" />
+                    <h:inputText id="idLaboresCampo" value="#{laboresController.selected.idLaboresCampo}" title="#{bundle.EditLaboresTitle_idLaboresCampo}" required="true" requiredMessage="#{bundle.EditLaboresRequiredMessage_idLaboresCampo}"/>
+                    <h:outputLabel value="#{bundle.EditLaboresLabel_proveedoridproveedor}" for="proveedoridproveedor" />
+                    <h:inputText id="proveedoridproveedor" value="#{laboresController.selected.proveedoridproveedor}" title="#{bundle.EditLaboresTitle_proveedoridproveedor}" required="true" requiredMessage="#{bundle.EditLaboresRequiredMessage_proveedoridproveedor}"/>
+                    <h:outputLabel value="#{bundle.EditLaboresLabel_programacionLaboresIdUnicoLabor}" for="programacionLaboresIdUnicoLabor" />
+                    <h:inputText id="programacionLaboresIdUnicoLabor" value="#{laboresController.selected.programacionLaboresIdUnicoLabor}" title="#{bundle.EditLaboresTitle_programacionLaboresIdUnicoLabor}" required="true" requiredMessage="#{bundle.EditLaboresRequiredMessage_programacionLaboresIdUnicoLabor}"/>
+                    <h:outputLabel value="#{bundle.EditLaboresLabel_zonaIdZona}" for="zonaIdZona" />
+                    <h:inputText id="zonaIdZona" value="#{laboresController.selected.zonaIdZona}" title="#{bundle.EditLaboresTitle_zonaIdZona}" required="true" requiredMessage="#{bundle.EditLaboresRequiredMessage_zonaIdZona}"/>
+                    <h:outputLabel value="#{bundle.EditLaboresLabel_tipoLabor}" for="tipoLabor" />
+                    <h:inputText id="tipoLabor" value="#{laboresController.selected.tipoLabor}" title="#{bundle.EditLaboresTitle_tipoLabor}" required="true" requiredMessage="#{bundle.EditLaboresRequiredMessage_tipoLabor}"/>
+                    <h:outputLabel value="#{bundle.EditLaboresLabel_tiempoLabor}" for="tiempoLabor" />
+                    <h:inputText id="tiempoLabor" value="#{laboresController.selected.tiempoLabor}" title="#{bundle.EditLaboresTitle_tiempoLabor}" required="true" requiredMessage="#{bundle.EditLaboresRequiredMessage_tiempoLabor}"/>
+                    <h:outputLabel value="#{bundle.EditLaboresLabel_tercero}" for="tercero" />
+                    <h:inputText id="tercero" value="#{laboresController.selected.tercero}" title="#{bundle.EditLaboresTitle_tercero}" required="true" requiredMessage="#{bundle.EditLaboresRequiredMessage_tercero}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{laboresController.update}" value="#{bundle.EditLaboresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLaboresViewLink}"/>
+                <br />
+                <h:commandLink action="#{laboresController.prepareList}" value="#{bundle.EditLaboresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLaboresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProgramacionLaboresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateProgramacionLaboresLabel_idUnicoLabor}" for="idUnicoLabor" />
+                    <h:inputText id="idUnicoLabor" value="#{programacionLaboresController.selected.idUnicoLabor}" title="#{bundle.CreateProgramacionLaboresTitle_idUnicoLabor}" required="true" requiredMessage="#{bundle.CreateProgramacionLaboresRequiredMessage_idUnicoLabor}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramacionLaboresLabel_idLabor}" for="idLabor" />
+                    <h:inputText id="idLabor" value="#{programacionLaboresController.selected.idLabor}" title="#{bundle.CreateProgramacionLaboresTitle_idLabor}" required="true" requiredMessage="#{bundle.CreateProgramacionLaboresRequiredMessage_idLabor}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramacionLaboresLabel_nombreLabor}" for="nombreLabor" />
+                    <h:inputText id="nombreLabor" value="#{programacionLaboresController.selected.nombreLabor}" title="#{bundle.CreateProgramacionLaboresTitle_nombreLabor}" required="true" requiredMessage="#{bundle.CreateProgramacionLaboresRequiredMessage_nombreLabor}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramacionLaboresLabel_descripcionLabor}" for="descripcionLabor" />
+                    <h:inputText id="descripcionLabor" value="#{programacionLaboresController.selected.descripcionLabor}" title="#{bundle.CreateProgramacionLaboresTitle_descripcionLabor}" required="true" requiredMessage="#{bundle.CreateProgramacionLaboresRequiredMessage_descripcionLabor}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramacionLaboresLabel_observacionLabor}" for="observacionLabor" />
+                    <h:inputText id="observacionLabor" value="#{programacionLaboresController.selected.observacionLabor}" title="#{bundle.CreateProgramacionLaboresTitle_observacionLabor}" required="true" requiredMessage="#{bundle.CreateProgramacionLaboresRequiredMessage_observacionLabor}"/>
+                    <h:outputLabel value="#{bundle.CreateProgramacionLaboresLabel_fechaInicio}" for="fechaInicio" />
+                    <h:inputText id="fechaInicio" value="#{programacionLaboresController.selected.fechaInicio}" title="#{bundle.CreateProgramacionLaboresTitle_fechaInicio}" required="true" requiredMessage="#{bundle.CreateProgramacionLaboresRequiredMessage_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateProgramacionLaboresLabel_fechaTerminacion}" for="fechaTerminacion" />
+                    <h:inputText id="fechaTerminacion" value="#{programacionLaboresController.selected.fechaTerminacion}" title="#{bundle.CreateProgramacionLaboresTitle_fechaTerminacion}" required="true" requiredMessage="#{bundle.CreateProgramacionLaboresRequiredMessage_fechaTerminacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{programacionLaboresController.create}" value="#{bundle.CreateProgramacionLaboresSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{programacionLaboresController.prepareList}" value="#{bundle.CreateProgramacionLaboresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateProgramacionLaboresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

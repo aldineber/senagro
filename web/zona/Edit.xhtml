@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditZonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditZonaLabel_idZona}" for="idZona" />
+                    <h:inputText id="idZona" value="#{zonaController.selected.idZona}" title="#{bundle.EditZonaTitle_idZona}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_idZona}"/>
+                    <h:outputLabel value="#{bundle.EditZonaLabel_empresaIdEmpresa}" for="empresaIdEmpresa" />
+                    <h:inputText id="empresaIdEmpresa" value="#{zonaController.selected.empresaIdEmpresa}" title="#{bundle.EditZonaTitle_empresaIdEmpresa}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_empresaIdEmpresa}"/>
+                    <h:outputLabel value="#{bundle.EditZonaLabel_nombreZona}" for="nombreZona" />
+                    <h:inputText id="nombreZona" value="#{zonaController.selected.nombreZona}" title="#{bundle.EditZonaTitle_nombreZona}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_nombreZona}"/>
+                    <h:outputLabel value="#{bundle.EditZonaLabel_ubicacionZona}" for="ubicacionZona" />
+                    <h:inputText id="ubicacionZona" value="#{zonaController.selected.ubicacionZona}" title="#{bundle.EditZonaTitle_ubicacionZona}" required="true" requiredMessage="#{bundle.EditZonaRequiredMessage_ubicacionZona}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{zonaController.update}" value="#{bundle.EditZonaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditZonaViewLink}"/>
+                <br />
+                <h:commandLink action="#{zonaController.prepareList}" value="#{bundle.EditZonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditZonaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAreaNetaHaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAreaNetaHaLabel_idAreaNetaHa}" for="idAreaNetaHa" />
+                    <h:inputText id="idAreaNetaHa" value="#{areaNetaHaController.selected.idAreaNetaHa}" title="#{bundle.EditAreaNetaHaTitle_idAreaNetaHa}" required="true" requiredMessage="#{bundle.EditAreaNetaHaRequiredMessage_idAreaNetaHa}"/>
+                    <h:outputLabel value="#{bundle.EditAreaNetaHaLabel_areaNeta}" for="areaNeta" />
+                    <h:inputText id="areaNeta" value="#{areaNetaHaController.selected.areaNeta}" title="#{bundle.EditAreaNetaHaTitle_areaNeta}" required="true" requiredMessage="#{bundle.EditAreaNetaHaRequiredMessage_areaNeta}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{areaNetaHaController.update}" value="#{bundle.EditAreaNetaHaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAreaNetaHaViewLink}"/>
+                <br />
+                <h:commandLink action="#{areaNetaHaController.prepareList}" value="#{bundle.EditAreaNetaHaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAreaNetaHaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSeccionSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSeccionSuerteLabel_codigoSec}"/>
+                    <h:outputText value="#{seccionSuerteController.selected.codigoSec}" title="#{bundle.ViewSeccionSuerteTitle_codigoSec}"/>
+                    <h:outputText value="#{bundle.ViewSeccionSuerteLabel_suerteCodigoUniSuerte}"/>
+                    <h:outputText value="#{seccionSuerteController.selected.suerteCodigoUniSuerte}" title="#{bundle.ViewSeccionSuerteTitle_suerteCodigoUniSuerte}"/>
+                    <h:outputText value="#{bundle.ViewSeccionSuerteLabel_idSector}"/>
+                    <h:outputText value="#{seccionSuerteController.selected.idSector}" title="#{bundle.ViewSeccionSuerteTitle_idSector}"/>
+                    <h:outputText value="#{bundle.ViewSeccionSuerteLabel_subdivision}"/>
+                    <h:outputText value="#{seccionSuerteController.selected.subdivision}" title="#{bundle.ViewSeccionSuerteTitle_subdivision}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{seccionSuerteController.destroyAndView}" value="#{bundle.ViewSeccionSuerteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSeccionSuerteEditLink}"/>
+                <br />
+                <h:commandLink action="#{seccionSuerteController.prepareCreate}" value="#{bundle.ViewSeccionSuerteCreateLink}" />
+                <br />
+                <h:commandLink action="#{seccionSuerteController.prepareList}" value="#{bundle.ViewSeccionSuerteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSeccionSuerteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

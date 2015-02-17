@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSuerteUsoDeLaSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSuerteUsoDeLaSuerteLabel_suerteUsoDeLaSuertecol}" for="suerteUsoDeLaSuertecol" />
+                    <h:inputText id="suerteUsoDeLaSuertecol" value="#{suerteUsoDeLaSuerteController.selected.suerteUsoDeLaSuertecol}" title="#{bundle.CreateSuerteUsoDeLaSuerteTitle_suerteUsoDeLaSuertecol}" required="true" requiredMessage="#{bundle.CreateSuerteUsoDeLaSuerteRequiredMessage_suerteUsoDeLaSuertecol}"/>
+                    <h:outputLabel value="#{bundle.CreateSuerteUsoDeLaSuerteLabel_suerteCodigoUniSuerte}" for="suerteCodigoUniSuerte" />
+                    <h:inputText id="suerteCodigoUniSuerte" value="#{suerteUsoDeLaSuerteController.selected.suerteCodigoUniSuerte}" title="#{bundle.CreateSuerteUsoDeLaSuerteTitle_suerteCodigoUniSuerte}" required="true" requiredMessage="#{bundle.CreateSuerteUsoDeLaSuerteRequiredMessage_suerteCodigoUniSuerte}"/>
+                    <h:outputLabel value="#{bundle.CreateSuerteUsoDeLaSuerteLabel_usoDeLaSuerteIdUsoDeLaSuerte}" for="usoDeLaSuerteIdUsoDeLaSuerte" />
+                    <h:inputText id="usoDeLaSuerteIdUsoDeLaSuerte" value="#{suerteUsoDeLaSuerteController.selected.usoDeLaSuerteIdUsoDeLaSuerte}" title="#{bundle.CreateSuerteUsoDeLaSuerteTitle_usoDeLaSuerteIdUsoDeLaSuerte}" required="true" requiredMessage="#{bundle.CreateSuerteUsoDeLaSuerteRequiredMessage_usoDeLaSuerteIdUsoDeLaSuerte}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{suerteUsoDeLaSuerteController.create}" value="#{bundle.CreateSuerteUsoDeLaSuerteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{suerteUsoDeLaSuerteController.prepareList}" value="#{bundle.CreateSuerteUsoDeLaSuerteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSuerteUsoDeLaSuerteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

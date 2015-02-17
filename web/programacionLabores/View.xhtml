@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProgramacionLaboresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProgramacionLaboresLabel_idUnicoLabor}"/>
+                    <h:outputText value="#{programacionLaboresController.selected.idUnicoLabor}" title="#{bundle.ViewProgramacionLaboresTitle_idUnicoLabor}"/>
+                    <h:outputText value="#{bundle.ViewProgramacionLaboresLabel_idLabor}"/>
+                    <h:outputText value="#{programacionLaboresController.selected.idLabor}" title="#{bundle.ViewProgramacionLaboresTitle_idLabor}"/>
+                    <h:outputText value="#{bundle.ViewProgramacionLaboresLabel_nombreLabor}"/>
+                    <h:outputText value="#{programacionLaboresController.selected.nombreLabor}" title="#{bundle.ViewProgramacionLaboresTitle_nombreLabor}"/>
+                    <h:outputText value="#{bundle.ViewProgramacionLaboresLabel_descripcionLabor}"/>
+                    <h:outputText value="#{programacionLaboresController.selected.descripcionLabor}" title="#{bundle.ViewProgramacionLaboresTitle_descripcionLabor}"/>
+                    <h:outputText value="#{bundle.ViewProgramacionLaboresLabel_observacionLabor}"/>
+                    <h:outputText value="#{programacionLaboresController.selected.observacionLabor}" title="#{bundle.ViewProgramacionLaboresTitle_observacionLabor}"/>
+                    <h:outputText value="#{bundle.ViewProgramacionLaboresLabel_fechaInicio}"/>
+                    <h:outputText value="#{programacionLaboresController.selected.fechaInicio}" title="#{bundle.ViewProgramacionLaboresTitle_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProgramacionLaboresLabel_fechaTerminacion}"/>
+                    <h:outputText value="#{programacionLaboresController.selected.fechaTerminacion}" title="#{bundle.ViewProgramacionLaboresTitle_fechaTerminacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{programacionLaboresController.destroyAndView}" value="#{bundle.ViewProgramacionLaboresDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProgramacionLaboresEditLink}"/>
+                <br />
+                <h:commandLink action="#{programacionLaboresController.prepareCreate}" value="#{bundle.ViewProgramacionLaboresCreateLink}" />
+                <br />
+                <h:commandLink action="#{programacionLaboresController.prepareList}" value="#{bundle.ViewProgramacionLaboresShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProgramacionLaboresIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSuerteUsoDeLaSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSuerteUsoDeLaSuerteEmpty}" rendered="#{suerteUsoDeLaSuerteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{suerteUsoDeLaSuerteController.items.rowCount > 0}">
+                    <h:outputText value="#{suerteUsoDeLaSuerteController.pagination.pageFirstItem + 1}..#{suerteUsoDeLaSuerteController.pagination.pageLastItem + 1}/#{suerteUsoDeLaSuerteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{suerteUsoDeLaSuerteController.previous}" value="#{bundle.Previous} #{suerteUsoDeLaSuerteController.pagination.pageSize}" rendered="#{suerteUsoDeLaSuerteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{suerteUsoDeLaSuerteController.next}" value="#{bundle.Next} #{suerteUsoDeLaSuerteController.pagination.pageSize}" rendered="#{suerteUsoDeLaSuerteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{suerteUsoDeLaSuerteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteUsoDeLaSuerteTitle_suerteUsoDeLaSuertecol}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suerteUsoDeLaSuertecol}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteUsoDeLaSuerteTitle_suerteCodigoUniSuerte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suerteCodigoUniSuerte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteUsoDeLaSuerteTitle_usoDeLaSuerteIdUsoDeLaSuerte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usoDeLaSuerteIdUsoDeLaSuerte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{suerteUsoDeLaSuerteController.prepareView}" value="#{bundle.ListSuerteUsoDeLaSuerteViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{suerteUsoDeLaSuerteController.prepareEdit}" value="#{bundle.ListSuerteUsoDeLaSuerteEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{suerteUsoDeLaSuerteController.destroy}" value="#{bundle.ListSuerteUsoDeLaSuerteDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{suerteUsoDeLaSuerteController.prepareCreate}" value="#{bundle.ListSuerteUsoDeLaSuerteCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSuerteUsoDeLaSuerteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

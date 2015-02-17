@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEmpresaTipoNegociacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEmpresaTipoNegociacionEmpty}" rendered="#{empresaTipoNegociacionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{empresaTipoNegociacionController.items.rowCount > 0}">
+                    <h:outputText value="#{empresaTipoNegociacionController.pagination.pageFirstItem + 1}..#{empresaTipoNegociacionController.pagination.pageLastItem + 1}/#{empresaTipoNegociacionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{empresaTipoNegociacionController.previous}" value="#{bundle.Previous} #{empresaTipoNegociacionController.pagination.pageSize}" rendered="#{empresaTipoNegociacionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{empresaTipoNegociacionController.next}" value="#{bundle.Next} #{empresaTipoNegociacionController.pagination.pageSize}" rendered="#{empresaTipoNegociacionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{empresaTipoNegociacionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmpresaTipoNegociacionTitle_empresaTipoNegociacioncol}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.empresaTipoNegociacioncol}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmpresaTipoNegociacionTitle_empresaIdEmpresa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.empresaIdEmpresa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEmpresaTipoNegociacionTitle_tipoNegociacionIdTipoNegociacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoNegociacionIdTipoNegociacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{empresaTipoNegociacionController.prepareView}" value="#{bundle.ListEmpresaTipoNegociacionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{empresaTipoNegociacionController.prepareEdit}" value="#{bundle.ListEmpresaTipoNegociacionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{empresaTipoNegociacionController.destroy}" value="#{bundle.ListEmpresaTipoNegociacionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{empresaTipoNegociacionController.prepareCreate}" value="#{bundle.ListEmpresaTipoNegociacionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEmpresaTipoNegociacionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

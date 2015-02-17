@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUsoDeLaSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListUsoDeLaSuerteEmpty}" rendered="#{usoDeLaSuerteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{usoDeLaSuerteController.items.rowCount > 0}">
+                    <h:outputText value="#{usoDeLaSuerteController.pagination.pageFirstItem + 1}..#{usoDeLaSuerteController.pagination.pageLastItem + 1}/#{usoDeLaSuerteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{usoDeLaSuerteController.previous}" value="#{bundle.Previous} #{usoDeLaSuerteController.pagination.pageSize}" rendered="#{usoDeLaSuerteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{usoDeLaSuerteController.next}" value="#{bundle.Next} #{usoDeLaSuerteController.pagination.pageSize}" rendered="#{usoDeLaSuerteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{usoDeLaSuerteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsoDeLaSuerteTitle_idUsoDeLaSuerte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUsoDeLaSuerte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsoDeLaSuerteTitle_nombreSiembra}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreSiembra}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsoDeLaSuerteTitle_cultivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cultivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{usoDeLaSuerteController.prepareView}" value="#{bundle.ListUsoDeLaSuerteViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usoDeLaSuerteController.prepareEdit}" value="#{bundle.ListUsoDeLaSuerteEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usoDeLaSuerteController.destroy}" value="#{bundle.ListUsoDeLaSuerteDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{usoDeLaSuerteController.prepareCreate}" value="#{bundle.ListUsoDeLaSuerteCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListUsoDeLaSuerteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDetalleSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_detalleSuerte}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.detalleSuerte}" title="#{bundle.ViewDetalleSuerteTitle_detalleSuerte}"/>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_suerteCodigoUniSuerte}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.suerteCodigoUniSuerte}" title="#{bundle.ViewDetalleSuerteTitle_suerteCodigoUniSuerte}"/>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_numeroCorte}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.numeroCorte}" title="#{bundle.ViewDetalleSuerteTitle_numeroCorte}"/>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_fechaSiembra}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.fechaSiembra}" title="#{bundle.ViewDetalleSuerteTitle_fechaSiembra}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_fechaProximoCorte}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.fechaProximoCorte}" title="#{bundle.ViewDetalleSuerteTitle_fechaProximoCorte}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_nuevaFechaProximoCorte}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.nuevaFechaProximoCorte}" title="#{bundle.ViewDetalleSuerteTitle_nuevaFechaProximoCorte}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_fechaUltimoCorte}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.fechaUltimoCorte}" title="#{bundle.ViewDetalleSuerteTitle_fechaUltimoCorte}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_edadProximoCorte}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.edadProximoCorte}" title="#{bundle.ViewDetalleSuerteTitle_edadProximoCorte}"/>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_edadHoyMeses}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.edadHoyMeses}" title="#{bundle.ViewDetalleSuerteTitle_edadHoyMeses}"/>
+                    <h:outputText value="#{bundle.ViewDetalleSuerteLabel_cosechaMesPpto}"/>
+                    <h:outputText value="#{detalleSuerteController.selected.cosechaMesPpto}" title="#{bundle.ViewDetalleSuerteTitle_cosechaMesPpto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleSuerteController.destroyAndView}" value="#{bundle.ViewDetalleSuerteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDetalleSuerteEditLink}"/>
+                <br />
+                <h:commandLink action="#{detalleSuerteController.prepareCreate}" value="#{bundle.ViewDetalleSuerteCreateLink}" />
+                <br />
+                <h:commandLink action="#{detalleSuerteController.prepareList}" value="#{bundle.ViewDetalleSuerteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDetalleSuerteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

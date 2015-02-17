@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLaboresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLaboresLabel_idLaboresCampo}"/>
+                    <h:outputText value="#{laboresController.selected.idLaboresCampo}" title="#{bundle.ViewLaboresTitle_idLaboresCampo}"/>
+                    <h:outputText value="#{bundle.ViewLaboresLabel_proveedoridproveedor}"/>
+                    <h:outputText value="#{laboresController.selected.proveedoridproveedor}" title="#{bundle.ViewLaboresTitle_proveedoridproveedor}"/>
+                    <h:outputText value="#{bundle.ViewLaboresLabel_programacionLaboresIdUnicoLabor}"/>
+                    <h:outputText value="#{laboresController.selected.programacionLaboresIdUnicoLabor}" title="#{bundle.ViewLaboresTitle_programacionLaboresIdUnicoLabor}"/>
+                    <h:outputText value="#{bundle.ViewLaboresLabel_zonaIdZona}"/>
+                    <h:outputText value="#{laboresController.selected.zonaIdZona}" title="#{bundle.ViewLaboresTitle_zonaIdZona}"/>
+                    <h:outputText value="#{bundle.ViewLaboresLabel_tipoLabor}"/>
+                    <h:outputText value="#{laboresController.selected.tipoLabor}" title="#{bundle.ViewLaboresTitle_tipoLabor}"/>
+                    <h:outputText value="#{bundle.ViewLaboresLabel_tiempoLabor}"/>
+                    <h:outputText value="#{laboresController.selected.tiempoLabor}" title="#{bundle.ViewLaboresTitle_tiempoLabor}"/>
+                    <h:outputText value="#{bundle.ViewLaboresLabel_tercero}"/>
+                    <h:outputText value="#{laboresController.selected.tercero}" title="#{bundle.ViewLaboresTitle_tercero}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{laboresController.destroyAndView}" value="#{bundle.ViewLaboresDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLaboresEditLink}"/>
+                <br />
+                <h:commandLink action="#{laboresController.prepareCreate}" value="#{bundle.ViewLaboresCreateLink}" />
+                <br />
+                <h:commandLink action="#{laboresController.prepareList}" value="#{bundle.ViewLaboresShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLaboresIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

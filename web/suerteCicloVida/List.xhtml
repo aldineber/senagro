@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSuerteCicloVidaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSuerteCicloVidaEmpty}" rendered="#{suerteCicloVidaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{suerteCicloVidaController.items.rowCount > 0}">
+                    <h:outputText value="#{suerteCicloVidaController.pagination.pageFirstItem + 1}..#{suerteCicloVidaController.pagination.pageLastItem + 1}/#{suerteCicloVidaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{suerteCicloVidaController.previous}" value="#{bundle.Previous} #{suerteCicloVidaController.pagination.pageSize}" rendered="#{suerteCicloVidaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{suerteCicloVidaController.next}" value="#{bundle.Next} #{suerteCicloVidaController.pagination.pageSize}" rendered="#{suerteCicloVidaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{suerteCicloVidaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteCicloVidaTitle_idsuertecicloVidacol}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idsuertecicloVidacol}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteCicloVidaTitle_cicloVidaidcicloVida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cicloVidaidcicloVida}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteCicloVidaTitle_suerteCodigoUniSuerte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.suerteCodigoUniSuerte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{suerteCicloVidaController.prepareView}" value="#{bundle.ListSuerteCicloVidaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{suerteCicloVidaController.prepareEdit}" value="#{bundle.ListSuerteCicloVidaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{suerteCicloVidaController.destroy}" value="#{bundle.ListSuerteCicloVidaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{suerteCicloVidaController.prepareCreate}" value="#{bundle.ListSuerteCicloVidaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSuerteCicloVidaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

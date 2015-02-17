@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSuerteEmpty}" rendered="#{suerteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{suerteController.items.rowCount > 0}">
+                    <h:outputText value="#{suerteController.pagination.pageFirstItem + 1}..#{suerteController.pagination.pageLastItem + 1}/#{suerteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{suerteController.previous}" value="#{bundle.Previous} #{suerteController.pagination.pageSize}" rendered="#{suerteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{suerteController.next}" value="#{bundle.Next} #{suerteController.pagination.pageSize}" rendered="#{suerteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{suerteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteTitle_codigoUniSuerte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoUniSuerte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteTitle_sectoridsector}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sectoridsector}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSuerteTitle_idSuerte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSuerte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{suerteController.prepareView}" value="#{bundle.ListSuerteViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{suerteController.prepareEdit}" value="#{bundle.ListSuerteEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{suerteController.destroy}" value="#{bundle.ListSuerteDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{suerteController.prepareCreate}" value="#{bundle.ListSuerteCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSuerteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

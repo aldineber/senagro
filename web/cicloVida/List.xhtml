@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCicloVidaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCicloVidaEmpty}" rendered="#{cicloVidaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cicloVidaController.items.rowCount > 0}">
+                    <h:outputText value="#{cicloVidaController.pagination.pageFirstItem + 1}..#{cicloVidaController.pagination.pageLastItem + 1}/#{cicloVidaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cicloVidaController.previous}" value="#{bundle.Previous} #{cicloVidaController.pagination.pageSize}" rendered="#{cicloVidaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cicloVidaController.next}" value="#{bundle.Next} #{cicloVidaController.pagination.pageSize}" rendered="#{cicloVidaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cicloVidaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCicloVidaTitle_idcicloVida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcicloVida}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCicloVidaTitle_edadCultivoIdEdad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.edadCultivoIdEdad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCicloVidaTitle_tiempoCicloVida}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tiempoCicloVida}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cicloVidaController.prepareView}" value="#{bundle.ListCicloVidaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cicloVidaController.prepareEdit}" value="#{bundle.ListCicloVidaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cicloVidaController.destroy}" value="#{bundle.ListCicloVidaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cicloVidaController.prepareCreate}" value="#{bundle.ListCicloVidaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCicloVidaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

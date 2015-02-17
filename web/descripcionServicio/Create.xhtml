@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDescripcionServicioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDescripcionServicioLabel_idServivio}" for="idServivio" />
+                    <h:inputText id="idServivio" value="#{descripcionServicioController.selected.idServivio}" title="#{bundle.CreateDescripcionServicioTitle_idServivio}" required="true" requiredMessage="#{bundle.CreateDescripcionServicioRequiredMessage_idServivio}"/>
+                    <h:outputLabel value="#{bundle.CreateDescripcionServicioLabel_proveedorIdProveedor}" for="proveedorIdProveedor" />
+                    <h:inputText id="proveedorIdProveedor" value="#{descripcionServicioController.selected.proveedorIdProveedor}" title="#{bundle.CreateDescripcionServicioTitle_proveedorIdProveedor}" required="true" requiredMessage="#{bundle.CreateDescripcionServicioRequiredMessage_proveedorIdProveedor}"/>
+                    <h:outputLabel value="#{bundle.CreateDescripcionServicioLabel_posicion}" for="posicion" />
+                    <h:inputText id="posicion" value="#{descripcionServicioController.selected.posicion}" title="#{bundle.CreateDescripcionServicioTitle_posicion}" required="true" requiredMessage="#{bundle.CreateDescripcionServicioRequiredMessage_posicion}"/>
+                    <h:outputLabel value="#{bundle.CreateDescripcionServicioLabel_tarifa}" for="tarifa" />
+                    <h:inputText id="tarifa" value="#{descripcionServicioController.selected.tarifa}" title="#{bundle.CreateDescripcionServicioTitle_tarifa}" required="true" requiredMessage="#{bundle.CreateDescripcionServicioRequiredMessage_tarifa}"/>
+                    <h:outputLabel value="#{bundle.CreateDescripcionServicioLabel_descripcionServicio}" for="descripcionServicio" />
+                    <h:inputText id="descripcionServicio" value="#{descripcionServicioController.selected.descripcionServicio}" title="#{bundle.CreateDescripcionServicioTitle_descripcionServicio}" required="true" requiredMessage="#{bundle.CreateDescripcionServicioRequiredMessage_descripcionServicio}"/>
+                    <h:outputLabel value="#{bundle.CreateDescripcionServicioLabel_unidad}" for="unidad" />
+                    <h:inputText id="unidad" value="#{descripcionServicioController.selected.unidad}" title="#{bundle.CreateDescripcionServicioTitle_unidad}" required="true" requiredMessage="#{bundle.CreateDescripcionServicioRequiredMessage_unidad}"/>
+                    <h:outputLabel value="#{bundle.CreateDescripcionServicioLabel_prioridad}" for="prioridad" />
+                    <h:inputText id="prioridad" value="#{descripcionServicioController.selected.prioridad}" title="#{bundle.CreateDescripcionServicioTitle_prioridad}" required="true" requiredMessage="#{bundle.CreateDescripcionServicioRequiredMessage_prioridad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{descripcionServicioController.create}" value="#{bundle.CreateDescripcionServicioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{descripcionServicioController.prepareList}" value="#{bundle.CreateDescripcionServicioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDescripcionServicioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSuerteLabel_codigoUniSuerte}"/>
+                    <h:outputText value="#{suerteController.selected.codigoUniSuerte}" title="#{bundle.ViewSuerteTitle_codigoUniSuerte}"/>
+                    <h:outputText value="#{bundle.ViewSuerteLabel_sectoridsector}"/>
+                    <h:outputText value="#{suerteController.selected.sectoridsector}" title="#{bundle.ViewSuerteTitle_sectoridsector}"/>
+                    <h:outputText value="#{bundle.ViewSuerteLabel_idSuerte}"/>
+                    <h:outputText value="#{suerteController.selected.idSuerte}" title="#{bundle.ViewSuerteTitle_idSuerte}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{suerteController.destroyAndView}" value="#{bundle.ViewSuerteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSuerteEditLink}"/>
+                <br />
+                <h:commandLink action="#{suerteController.prepareCreate}" value="#{bundle.ViewSuerteCreateLink}" />
+                <br />
+                <h:commandLink action="#{suerteController.prepareList}" value="#{bundle.ViewSuerteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSuerteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

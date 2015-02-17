@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRolesPermisosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRolesPermisosLabel_rolesPermisoscol}"/>
+                    <h:outputText value="#{rolesPermisosController.selected.rolesPermisoscol}" title="#{bundle.ViewRolesPermisosTitle_rolesPermisoscol}"/>
+                    <h:outputText value="#{bundle.ViewRolesPermisosLabel_rolesIdRoles}"/>
+                    <h:outputText value="#{rolesPermisosController.selected.rolesIdRoles}" title="#{bundle.ViewRolesPermisosTitle_rolesIdRoles}"/>
+                    <h:outputText value="#{bundle.ViewRolesPermisosLabel_permisosIdpermisos}"/>
+                    <h:outputText value="#{rolesPermisosController.selected.permisosIdpermisos}" title="#{bundle.ViewRolesPermisosTitle_permisosIdpermisos}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rolesPermisosController.destroyAndView}" value="#{bundle.ViewRolesPermisosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRolesPermisosEditLink}"/>
+                <br />
+                <h:commandLink action="#{rolesPermisosController.prepareCreate}" value="#{bundle.ViewRolesPermisosCreateLink}" />
+                <br />
+                <h:commandLink action="#{rolesPermisosController.prepareList}" value="#{bundle.ViewRolesPermisosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRolesPermisosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

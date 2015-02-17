@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoLaborTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoLaborLabel_idLabor}"/>
+                    <h:outputText value="#{tipoLaborController.selected.idLabor}" title="#{bundle.ViewTipoLaborTitle_idLabor}"/>
+                    <h:outputText value="#{bundle.ViewTipoLaborLabel_laboresidLaboresCampo}"/>
+                    <h:outputText value="#{tipoLaborController.selected.laboresidLaboresCampo}" title="#{bundle.ViewTipoLaborTitle_laboresidLaboresCampo}"/>
+                    <h:outputText value="#{bundle.ViewTipoLaborLabel_nombretipoLabor}"/>
+                    <h:outputText value="#{tipoLaborController.selected.nombretipoLabor}" title="#{bundle.ViewTipoLaborTitle_nombretipoLabor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoLaborController.destroyAndView}" value="#{bundle.ViewTipoLaborDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoLaborEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoLaborController.prepareCreate}" value="#{bundle.ViewTipoLaborCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoLaborController.prepareList}" value="#{bundle.ViewTipoLaborShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoLaborIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

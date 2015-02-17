@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSuerteVariedadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSuerteVariedadLabel_idsuertevariedadcol}" for="idsuertevariedadcol" />
+                    <h:inputText id="idsuertevariedadcol" value="#{suerteVariedadController.selected.idsuertevariedadcol}" title="#{bundle.EditSuerteVariedadTitle_idsuertevariedadcol}" required="true" requiredMessage="#{bundle.EditSuerteVariedadRequiredMessage_idsuertevariedadcol}"/>
+                    <h:outputLabel value="#{bundle.EditSuerteVariedadLabel_suerteCodigoUniSuerte}" for="suerteCodigoUniSuerte" />
+                    <h:inputText id="suerteCodigoUniSuerte" value="#{suerteVariedadController.selected.suerteCodigoUniSuerte}" title="#{bundle.EditSuerteVariedadTitle_suerteCodigoUniSuerte}" required="true" requiredMessage="#{bundle.EditSuerteVariedadRequiredMessage_suerteCodigoUniSuerte}"/>
+                    <h:outputLabel value="#{bundle.EditSuerteVariedadLabel_variedadIdVariedad}" for="variedadIdVariedad" />
+                    <h:inputText id="variedadIdVariedad" value="#{suerteVariedadController.selected.variedadIdVariedad}" title="#{bundle.EditSuerteVariedadTitle_variedadIdVariedad}" required="true" requiredMessage="#{bundle.EditSuerteVariedadRequiredMessage_variedadIdVariedad}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{suerteVariedadController.update}" value="#{bundle.EditSuerteVariedadSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSuerteVariedadViewLink}"/>
+                <br />
+                <h:commandLink action="#{suerteVariedadController.prepareList}" value="#{bundle.EditSuerteVariedadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSuerteVariedadIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

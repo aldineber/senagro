@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSeccionSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSeccionSuerteLabel_codigoSec}" for="codigoSec" />
+                    <h:inputText id="codigoSec" value="#{seccionSuerteController.selected.codigoSec}" title="#{bundle.CreateSeccionSuerteTitle_codigoSec}" required="true" requiredMessage="#{bundle.CreateSeccionSuerteRequiredMessage_codigoSec}"/>
+                    <h:outputLabel value="#{bundle.CreateSeccionSuerteLabel_suerteCodigoUniSuerte}" for="suerteCodigoUniSuerte" />
+                    <h:inputText id="suerteCodigoUniSuerte" value="#{seccionSuerteController.selected.suerteCodigoUniSuerte}" title="#{bundle.CreateSeccionSuerteTitle_suerteCodigoUniSuerte}" required="true" requiredMessage="#{bundle.CreateSeccionSuerteRequiredMessage_suerteCodigoUniSuerte}"/>
+                    <h:outputLabel value="#{bundle.CreateSeccionSuerteLabel_idSector}" for="idSector" />
+                    <h:inputText id="idSector" value="#{seccionSuerteController.selected.idSector}" title="#{bundle.CreateSeccionSuerteTitle_idSector}" required="true" requiredMessage="#{bundle.CreateSeccionSuerteRequiredMessage_idSector}"/>
+                    <h:outputLabel value="#{bundle.CreateSeccionSuerteLabel_subdivision}" for="subdivision" />
+                    <h:inputText id="subdivision" value="#{seccionSuerteController.selected.subdivision}" title="#{bundle.CreateSeccionSuerteTitle_subdivision}" required="true" requiredMessage="#{bundle.CreateSeccionSuerteRequiredMessage_subdivision}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{seccionSuerteController.create}" value="#{bundle.CreateSeccionSuerteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{seccionSuerteController.prepareList}" value="#{bundle.CreateSeccionSuerteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSeccionSuerteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

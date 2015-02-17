@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDescripcionServicioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDescripcionServicioLabel_idServivio}" for="idServivio" />
+                    <h:inputText id="idServivio" value="#{descripcionServicioController.selected.idServivio}" title="#{bundle.EditDescripcionServicioTitle_idServivio}" required="true" requiredMessage="#{bundle.EditDescripcionServicioRequiredMessage_idServivio}"/>
+                    <h:outputLabel value="#{bundle.EditDescripcionServicioLabel_proveedorIdProveedor}" for="proveedorIdProveedor" />
+                    <h:inputText id="proveedorIdProveedor" value="#{descripcionServicioController.selected.proveedorIdProveedor}" title="#{bundle.EditDescripcionServicioTitle_proveedorIdProveedor}" required="true" requiredMessage="#{bundle.EditDescripcionServicioRequiredMessage_proveedorIdProveedor}"/>
+                    <h:outputLabel value="#{bundle.EditDescripcionServicioLabel_posicion}" for="posicion" />
+                    <h:inputText id="posicion" value="#{descripcionServicioController.selected.posicion}" title="#{bundle.EditDescripcionServicioTitle_posicion}" required="true" requiredMessage="#{bundle.EditDescripcionServicioRequiredMessage_posicion}"/>
+                    <h:outputLabel value="#{bundle.EditDescripcionServicioLabel_tarifa}" for="tarifa" />
+                    <h:inputText id="tarifa" value="#{descripcionServicioController.selected.tarifa}" title="#{bundle.EditDescripcionServicioTitle_tarifa}" required="true" requiredMessage="#{bundle.EditDescripcionServicioRequiredMessage_tarifa}"/>
+                    <h:outputLabel value="#{bundle.EditDescripcionServicioLabel_descripcionServicio}" for="descripcionServicio" />
+                    <h:inputText id="descripcionServicio" value="#{descripcionServicioController.selected.descripcionServicio}" title="#{bundle.EditDescripcionServicioTitle_descripcionServicio}" required="true" requiredMessage="#{bundle.EditDescripcionServicioRequiredMessage_descripcionServicio}"/>
+                    <h:outputLabel value="#{bundle.EditDescripcionServicioLabel_unidad}" for="unidad" />
+                    <h:inputText id="unidad" value="#{descripcionServicioController.selected.unidad}" title="#{bundle.EditDescripcionServicioTitle_unidad}" required="true" requiredMessage="#{bundle.EditDescripcionServicioRequiredMessage_unidad}"/>
+                    <h:outputLabel value="#{bundle.EditDescripcionServicioLabel_prioridad}" for="prioridad" />
+                    <h:inputText id="prioridad" value="#{descripcionServicioController.selected.prioridad}" title="#{bundle.EditDescripcionServicioTitle_prioridad}" required="true" requiredMessage="#{bundle.EditDescripcionServicioRequiredMessage_prioridad}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{descripcionServicioController.update}" value="#{bundle.EditDescripcionServicioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDescripcionServicioViewLink}"/>
+                <br />
+                <h:commandLink action="#{descripcionServicioController.prepareList}" value="#{bundle.EditDescripcionServicioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDescripcionServicioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

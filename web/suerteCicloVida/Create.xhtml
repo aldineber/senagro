@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSuerteCicloVidaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSuerteCicloVidaLabel_idsuertecicloVidacol}" for="idsuertecicloVidacol" />
+                    <h:inputText id="idsuertecicloVidacol" value="#{suerteCicloVidaController.selected.idsuertecicloVidacol}" title="#{bundle.CreateSuerteCicloVidaTitle_idsuertecicloVidacol}" required="true" requiredMessage="#{bundle.CreateSuerteCicloVidaRequiredMessage_idsuertecicloVidacol}"/>
+                    <h:outputLabel value="#{bundle.CreateSuerteCicloVidaLabel_cicloVidaidcicloVida}" for="cicloVidaidcicloVida" />
+                    <h:inputText id="cicloVidaidcicloVida" value="#{suerteCicloVidaController.selected.cicloVidaidcicloVida}" title="#{bundle.CreateSuerteCicloVidaTitle_cicloVidaidcicloVida}" required="true" requiredMessage="#{bundle.CreateSuerteCicloVidaRequiredMessage_cicloVidaidcicloVida}"/>
+                    <h:outputLabel value="#{bundle.CreateSuerteCicloVidaLabel_suerteCodigoUniSuerte}" for="suerteCodigoUniSuerte" />
+                    <h:inputText id="suerteCodigoUniSuerte" value="#{suerteCicloVidaController.selected.suerteCodigoUniSuerte}" title="#{bundle.CreateSuerteCicloVidaTitle_suerteCodigoUniSuerte}" required="true" requiredMessage="#{bundle.CreateSuerteCicloVidaRequiredMessage_suerteCodigoUniSuerte}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{suerteCicloVidaController.create}" value="#{bundle.CreateSuerteCicloVidaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{suerteCicloVidaController.prepareList}" value="#{bundle.CreateSuerteCicloVidaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSuerteCicloVidaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

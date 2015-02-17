@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetalleSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_detalleSuerte}" for="detalleSuerte" />
+                    <h:inputText id="detalleSuerte" value="#{detalleSuerteController.selected.detalleSuerte}" title="#{bundle.CreateDetalleSuerteTitle_detalleSuerte}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_detalleSuerte}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_suerteCodigoUniSuerte}" for="suerteCodigoUniSuerte" />
+                    <h:inputText id="suerteCodigoUniSuerte" value="#{detalleSuerteController.selected.suerteCodigoUniSuerte}" title="#{bundle.CreateDetalleSuerteTitle_suerteCodigoUniSuerte}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_suerteCodigoUniSuerte}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_numeroCorte}" for="numeroCorte" />
+                    <h:inputText id="numeroCorte" value="#{detalleSuerteController.selected.numeroCorte}" title="#{bundle.CreateDetalleSuerteTitle_numeroCorte}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_numeroCorte}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_fechaSiembra}" for="fechaSiembra" />
+                    <h:inputText id="fechaSiembra" value="#{detalleSuerteController.selected.fechaSiembra}" title="#{bundle.CreateDetalleSuerteTitle_fechaSiembra}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_fechaSiembra}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_fechaProximoCorte}" for="fechaProximoCorte" />
+                    <h:inputText id="fechaProximoCorte" value="#{detalleSuerteController.selected.fechaProximoCorte}" title="#{bundle.CreateDetalleSuerteTitle_fechaProximoCorte}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_fechaProximoCorte}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_nuevaFechaProximoCorte}" for="nuevaFechaProximoCorte" />
+                    <h:inputText id="nuevaFechaProximoCorte" value="#{detalleSuerteController.selected.nuevaFechaProximoCorte}" title="#{bundle.CreateDetalleSuerteTitle_nuevaFechaProximoCorte}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_nuevaFechaProximoCorte}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_fechaUltimoCorte}" for="fechaUltimoCorte" />
+                    <h:inputText id="fechaUltimoCorte" value="#{detalleSuerteController.selected.fechaUltimoCorte}" title="#{bundle.CreateDetalleSuerteTitle_fechaUltimoCorte}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_edadProximoCorte}" for="edadProximoCorte" />
+                    <h:inputText id="edadProximoCorte" value="#{detalleSuerteController.selected.edadProximoCorte}" title="#{bundle.CreateDetalleSuerteTitle_edadProximoCorte}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_edadProximoCorte}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_edadHoyMeses}" for="edadHoyMeses" />
+                    <h:inputText id="edadHoyMeses" value="#{detalleSuerteController.selected.edadHoyMeses}" title="#{bundle.CreateDetalleSuerteTitle_edadHoyMeses}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_edadHoyMeses}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleSuerteLabel_cosechaMesPpto}" for="cosechaMesPpto" />
+                    <h:inputText id="cosechaMesPpto" value="#{detalleSuerteController.selected.cosechaMesPpto}" title="#{bundle.CreateDetalleSuerteTitle_cosechaMesPpto}" required="true" requiredMessage="#{bundle.CreateDetalleSuerteRequiredMessage_cosechaMesPpto}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleSuerteController.create}" value="#{bundle.CreateDetalleSuerteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleSuerteController.prepareList}" value="#{bundle.CreateDetalleSuerteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDetalleSuerteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDescripcionServicioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDescripcionServicioEmpty}" rendered="#{descripcionServicioController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{descripcionServicioController.items.rowCount > 0}">
+                    <h:outputText value="#{descripcionServicioController.pagination.pageFirstItem + 1}..#{descripcionServicioController.pagination.pageLastItem + 1}/#{descripcionServicioController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{descripcionServicioController.previous}" value="#{bundle.Previous} #{descripcionServicioController.pagination.pageSize}" rendered="#{descripcionServicioController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{descripcionServicioController.next}" value="#{bundle.Next} #{descripcionServicioController.pagination.pageSize}" rendered="#{descripcionServicioController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{descripcionServicioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDescripcionServicioTitle_idServivio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idServivio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDescripcionServicioTitle_proveedorIdProveedor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proveedorIdProveedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDescripcionServicioTitle_posicion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.posicion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDescripcionServicioTitle_tarifa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tarifa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDescripcionServicioTitle_descripcionServicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionServicio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDescripcionServicioTitle_unidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unidad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDescripcionServicioTitle_prioridad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.prioridad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{descripcionServicioController.prepareView}" value="#{bundle.ListDescripcionServicioViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{descripcionServicioController.prepareEdit}" value="#{bundle.ListDescripcionServicioEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{descripcionServicioController.destroy}" value="#{bundle.ListDescripcionServicioDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{descripcionServicioController.prepareCreate}" value="#{bundle.ListDescripcionServicioCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDescripcionServicioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

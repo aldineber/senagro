@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProgramacionLaboresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProgramacionLaboresEmpty}" rendered="#{programacionLaboresController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{programacionLaboresController.items.rowCount > 0}">
+                    <h:outputText value="#{programacionLaboresController.pagination.pageFirstItem + 1}..#{programacionLaboresController.pagination.pageLastItem + 1}/#{programacionLaboresController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{programacionLaboresController.previous}" value="#{bundle.Previous} #{programacionLaboresController.pagination.pageSize}" rendered="#{programacionLaboresController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{programacionLaboresController.next}" value="#{bundle.Next} #{programacionLaboresController.pagination.pageSize}" rendered="#{programacionLaboresController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{programacionLaboresController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacionLaboresTitle_idUnicoLabor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUnicoLabor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacionLaboresTitle_idLabor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idLabor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacionLaboresTitle_nombreLabor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreLabor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacionLaboresTitle_descripcionLabor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcionLabor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacionLaboresTitle_observacionLabor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacionLabor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacionLaboresTitle_fechaInicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInicio}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProgramacionLaboresTitle_fechaTerminacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaTerminacion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{programacionLaboresController.prepareView}" value="#{bundle.ListProgramacionLaboresViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programacionLaboresController.prepareEdit}" value="#{bundle.ListProgramacionLaboresEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{programacionLaboresController.destroy}" value="#{bundle.ListProgramacionLaboresDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{programacionLaboresController.prepareCreate}" value="#{bundle.ListProgramacionLaboresCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProgramacionLaboresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

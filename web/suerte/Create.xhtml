@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSuerteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSuerteLabel_codigoUniSuerte}" for="codigoUniSuerte" />
+                    <h:inputText id="codigoUniSuerte" value="#{suerteController.selected.codigoUniSuerte}" title="#{bundle.CreateSuerteTitle_codigoUniSuerte}" required="true" requiredMessage="#{bundle.CreateSuerteRequiredMessage_codigoUniSuerte}"/>
+                    <h:outputLabel value="#{bundle.CreateSuerteLabel_sectoridsector}" for="sectoridsector" />
+                    <h:inputText id="sectoridsector" value="#{suerteController.selected.sectoridsector}" title="#{bundle.CreateSuerteTitle_sectoridsector}" required="true" requiredMessage="#{bundle.CreateSuerteRequiredMessage_sectoridsector}"/>
+                    <h:outputLabel value="#{bundle.CreateSuerteLabel_idSuerte}" for="idSuerte" />
+                    <h:inputText id="idSuerte" value="#{suerteController.selected.idSuerte}" title="#{bundle.CreateSuerteTitle_idSuerte}" required="true" requiredMessage="#{bundle.CreateSuerteRequiredMessage_idSuerte}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{suerteController.create}" value="#{bundle.CreateSuerteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{suerteController.prepareList}" value="#{bundle.CreateSuerteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSuerteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

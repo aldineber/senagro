@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEmpleadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_idEmpleado}"/>
+                    <h:outputText value="#{empleadoController.selected.idEmpleado}" title="#{bundle.ViewEmpleadoTitle_idEmpleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_rolesIdRoles}"/>
+                    <h:outputText value="#{empleadoController.selected.rolesIdRoles}" title="#{bundle.ViewEmpleadoTitle_rolesIdRoles}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_cargosIdCargo}"/>
+                    <h:outputText value="#{empleadoController.selected.cargosIdCargo}" title="#{bundle.ViewEmpleadoTitle_cargosIdCargo}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_nombre1Empleado}"/>
+                    <h:outputText value="#{empleadoController.selected.nombre1Empleado}" title="#{bundle.ViewEmpleadoTitle_nombre1Empleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_nombre2Empleado}"/>
+                    <h:outputText value="#{empleadoController.selected.nombre2Empleado}" title="#{bundle.ViewEmpleadoTitle_nombre2Empleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_apellido1Empleado}"/>
+                    <h:outputText value="#{empleadoController.selected.apellido1Empleado}" title="#{bundle.ViewEmpleadoTitle_apellido1Empleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_apellido2Empleado}"/>
+                    <h:outputText value="#{empleadoController.selected.apellido2Empleado}" title="#{bundle.ViewEmpleadoTitle_apellido2Empleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_profesionEmpleado}"/>
+                    <h:outputText value="#{empleadoController.selected.profesionEmpleado}" title="#{bundle.ViewEmpleadoTitle_profesionEmpleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_telefonoEmpleado}"/>
+                    <h:outputText value="#{empleadoController.selected.telefonoEmpleado}" title="#{bundle.ViewEmpleadoTitle_telefonoEmpleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_celularEmpleado}"/>
+                    <h:outputText value="#{empleadoController.selected.celularEmpleado}" title="#{bundle.ViewEmpleadoTitle_celularEmpleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_correoEmpleado}"/>
+                    <h:outputText value="#{empleadoController.selected.correoEmpleado}" title="#{bundle.ViewEmpleadoTitle_correoEmpleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_direccionUsuario}"/>
+                    <h:outputText value="#{empleadoController.selected.direccionUsuario}" title="#{bundle.ViewEmpleadoTitle_direccionUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{empleadoController.destroyAndView}" value="#{bundle.ViewEmpleadoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEmpleadoEditLink}"/>
+                <br />
+                <h:commandLink action="#{empleadoController.prepareCreate}" value="#{bundle.ViewEmpleadoCreateLink}" />
+                <br />
+                <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.ViewEmpleadoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEmpleadoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
